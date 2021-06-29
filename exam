@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+     <input type="text" id="t1" name="n1" value="72" size="3" />&nbsp;
+     <button onclick="F1(t1.value)">F(X)</button>
+	 <br>
+	 <button onclick="F2()">Sort from MIN to MAX</button>
+	 <br>
+	 <button onclick="F3()">Sort from MAX to MIN</button>
+	 <br>y = <input type="text" id="t2" name="n1" value="" size="20" />&nbsp;
+	 <button onclick="F4(t2.value)">Serch F(X)</button>
+	 <br>x = <input type="text" id="t3" name="n1" value="" size="20" />&nbsp;
+	 <button onclick="F5(t3.value)">Serch X</button>
+	 <br>
+	 <button onclick="Test Sorts">Test Sort</button>
+	 <br>&nbsp;<br>
+	 <div id="id1">
+	 </div>
+  
+  
+	<script>
+	let arr = []
+    function F1(n){
+		   id1.innerHTML = ""
+		   for (i = 0; i < n; i++) {
+		        let a = Math.floor(Math.random() * 100)
+				let b = 6/(4*a + 10)
+				let c = "F(" + a + ") = " + b + "<br>"
+				id1.innerHTML += c
+				let xy = {
+				 "x": a,
+				 "y": b
+				}
+				arr.push(xy)
+           } 
+		   return arr;
+	}
+	   
+	 function F2(){
+	        F2Sort(arr)
+	}
+	   
+	function F2Sort(arr){   
+		  var len = arr.length;
+		  id1.innerHTML = "";
+		  
+		  for (var i = 0; i < len -1; i++) {
+			for(var j = 0 ; j < len - i - 1; j++){ 
+			if (arr[j].y > arr[j + 1].y) {
+			  let tmp = arr[j];
+			  arr[j] = arr[j + 1]
+			  arr[j + 1] = tmp;
+			}
+		   }
+		  }		  
+		  
+		  for (var i = 0; i < len; i++) {
+		      id1.innerHTML += "F(" + arr[i].x + ") = "+ arr[i].y +"<br>"
+		  }		
+		  return arr;
+	}
+	
+	function F3(){
+	        F3Sort(arr)
+	}
+	
+	function F3Sort(arr){   
+		  var len = arr.length;
+		  id1.innerHTML = "";
+		  
+		  for (var i = 0; i < len -1; i++) {
+			for(var j = 0 ; j < len - i - 1; j++){ 
+			if (arr[j].y < arr[j + 1].y) {
+			  let tmp = arr[j];
+			  arr[j] = arr[j + 1]
+			  arr[j + 1] = tmp;
+			}
+		   }
+		  }		  
+		  
+		  for (var i = 0; i < len; i++) {
+		      id1.innerHTML += "F(" + arr[i].x + ") = "+ arr[i].y +"<br>"
+		  }		
+		  return arr;
+	}
+	
+	function F4(v){
+	        id1.innerHTML = ""
+	        id1.innerHTML += F4Serch(arr, v)
+	}
+	
+	function F4Serch(arr, v){
+			  for (var i = 0; i < arr.length ; i++) {
+			      if(arr[i].y == v)
+				  {
+				       return "F(" + arr[i].x + ") = "+ arr[i].y
+				  }
+		        
+		     }		
+		     return "Not found";
+	}
+	
+	function F5(v){
+	        id1.innerHTML = ""
+	        id1.innerHTML += F5Serch(arr, v)
+	}
+	
+	function F5Serch(arr, v){
+			  for (var i = 0; i < arr.length ; i++) {
+			      if(arr[i].x == v)
+				  {
+				       return "F(" + arr[i].x + ") = "+ arr[i].y
+				  }
+		        
+		     }		
+		     return "Not found";
+	}
+
+	
+	</script>
+	
+	
+	
+	
+
+  </body>
+</html>
